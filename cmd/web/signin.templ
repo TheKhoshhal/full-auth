@@ -1,0 +1,52 @@
+package web
+
+templ ShowSignIn(isError bool) {
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Sign In</title>
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Rubik:400,700"
+        />
+        <link href={ "/css/signin.css" } rel="stylesheet"/>
+        <script src="/js/htmx.min.js"></script>
+      </head>
+      <body>
+        <div class="container">
+          <h1 class="title">Sign In</h1>
+          <form class="form" action="/login" method="post">
+            <input
+              type="text"
+              name="username"
+              placeholder="USERNAME"
+              class="input username"
+              required
+            />
+            <input
+              type="password"
+              name="password"
+              placeholder="PASSWORD"
+              class="input password"
+              required
+            />
+            @ShowSignInError(isError)
+            <div class="btn-container">
+              <a class="btn link" href="/signup">REGISTER</a>
+              <button type="submit" class="btn btn-submit" type="submit">
+                SIGN IN
+              </button>
+            </div>
+          </form>
+        </div>
+      </body>
+    </html>
+}
+
+templ ShowSignInError(isError bool) {
+  if isError {
+    <div class="error"> Invalid username or password! </div>
+  }
+}

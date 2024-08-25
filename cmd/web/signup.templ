@@ -1,0 +1,58 @@
+package web
+
+templ ShowSignUp(isError bool) {
+  <!doctype html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <title>Sign Up</title>
+      <link href="/css/signup.css" rel="stylesheet" />
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Rubik:400,700"
+      />
+    </head>
+    <body>
+      <div class="container">
+        <h1 class="title">Sign Up</h1>
+        <form class="form" action="/signup" method="post">
+          <input
+            type="text"
+            name="username"
+            placeholder="USERNAME"
+            class="input username"
+            required
+          />
+          <input
+            type="email"
+            name="email"
+            placeholder="EMAIL (e.g. example@gmail.com)"
+            class="input email"
+            required
+          />
+          <input
+            type="password"
+            name="password"
+            placeholder="PASSWORD"
+            class="input password"
+            required
+          />
+          @ShowSignUpError(isError)
+          <div class="btn-container">
+            <a class="btn link" href="/login">SIGN IN</a>
+            <button type="submit" class="btn btn-submit" type="submit">
+              REGISTER
+            </button>
+          </div>
+        </form>
+      </div>
+    </body>
+  </html>
+}
+
+templ ShowSignUpError(isError bool) {
+  if isError {
+    <div class="error"> Account already exists! </div>
+  }
+}

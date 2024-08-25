@@ -1,0 +1,6 @@
+CREATE TABLE IF NOT EXISTS accounts (
+  ID INTEGER PRIMARY KEY,
+  username TEXT NOT NULL,
+  password TEXT NOT NULL,
+  email TEXT NOT NULL
+);
